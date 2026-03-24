@@ -694,7 +694,7 @@ body {
     width: 100%;
     height: auto;
     position: fixed;
-    bottom: 4rem;
+    bottom: 2.6rem;
     top: auto;
     left: 0;
     right: 0;
@@ -799,7 +799,7 @@ body {
   .wrapped-intro h2 {
     font-size: 2rem;
   }
-  
+
 /* Footer */
   .footer {
     left: 0;
