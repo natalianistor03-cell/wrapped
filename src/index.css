@@ -793,4 +793,11 @@ body {
   .wrapped-intro h2 {
     font-size: 2rem;
   }
+  /* Footer */
+  .footer {
+    left: 0;
+    transform: none;
+    max-width: 100%;
+    display: none; /* ocultamos el footer en móvil para no chocar con la navbar */
+  }
 }
