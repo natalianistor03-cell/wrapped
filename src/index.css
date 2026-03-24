@@ -661,7 +661,7 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* --Footer --*/
+/* ── Footer ── */
 .footer {
   position: fixed;
   bottom: 0;
@@ -694,16 +694,22 @@ body {
     width: 100%;
     height: auto;
     position: fixed;
-    bottom: 0;
+    bottom: 4rem;
     top: auto;
     left: 0;
     right: 0;
     flex-direction: row;
     align-items: center;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 1rem;
     border-right: none;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     z-index: 50;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .sidebar::-webkit-scrollbar {
+    display: none;
   }
 
   .logo {
@@ -714,10 +720,10 @@ body {
     width: 100%;
   }
 
-  .nav {
+.nav {
     flex-direction: row;
-    justify-content: space-around;
-    gap: 0;
+    gap: 0.4rem;
+    width: max-content;
   }
 
   .nav-item {
@@ -725,7 +731,7 @@ body {
     flex-direction: column;
     align-items: center;
     font-size: 0.65rem;
-    padding: 0.5rem 0.4rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 10px;
     white-space: nowrap;
   }
@@ -741,7 +747,7 @@ body {
   /* Content */
   .content {
     padding: 1.5rem 1rem;
-    padding-bottom: 5rem;
+    padding-bottom: 9rem;
   }
 
   /* Page */
@@ -793,11 +799,14 @@ body {
   .wrapped-intro h2 {
     font-size: 2rem;
   }
-  /* Footer */
+  
+/* Footer */
   .footer {
     left: 0;
     transform: none;
     max-width: 100%;
-    display: none;
+    bottom: 0;
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
   }
 }
