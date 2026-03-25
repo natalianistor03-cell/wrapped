@@ -901,3 +901,35 @@ body {
     display: none;
   }
 }
+
+/*-- 404 --*/
+.notfound-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.notfound-code {
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.notfound-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.notfound-sub {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}

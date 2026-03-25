@@ -9,6 +9,7 @@ import Workouts from './pages/Workouts'
 import Places from './pages/Places'
 import Mood from './pages/Mood'
 import Wrapped from './pages/Wrapped'
+import NotFound from './pages/NotFound'
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth()
@@ -26,6 +27,7 @@ function App() {
       <Route path="/lugares" element={<ProtectedRoute><Places /></ProtectedRoute>} />
       <Route path="/animo" element={<ProtectedRoute><Mood /></ProtectedRoute>} />
       <Route path="/wrapped" element={<ProtectedRoute><Wrapped /></ProtectedRoute>} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
