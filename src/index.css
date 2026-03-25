@@ -1065,28 +1065,3 @@ body {
   opacity: 1;
 }
 
-/*--ICONOS--*/
-.page-title-icon {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.signout-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.nav-signout {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .nav-signout {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-}
