@@ -20,7 +20,7 @@ function Layout({ children }) {
           <YearFilter />
           <nav className="nav">
             <NavLink to="/" end className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>🏠 Dashboard</NavLink>
-            <NavLink to="/peliculas" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}><img src="/popcorn.png" alt="películas" width={18} height={18} /> Películas</NavLink>
+            <NavLink to="/peliculas" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>🎬 Películas</NavLink>
             <NavLink to="/libros" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>📚 Libros</NavLink>
             <NavLink to="/entrenamientos" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>🏋️ Entrenamientos</NavLink>
             <NavLink to="/lugares" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>🌍 Lugares</NavLink>
