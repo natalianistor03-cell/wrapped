@@ -919,6 +919,7 @@ body {
   font-weight: 900;
   line-height: 1;
   background: linear-gradient(135deg, #6366f1, #a855f7);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -932,4 +933,14 @@ body {
   color: rgba(255, 255, 255, 0.3);
   font-size: 0.95rem;
   margin-bottom: 1rem;
+}
+
+.spin {
+  display: inline-block;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
