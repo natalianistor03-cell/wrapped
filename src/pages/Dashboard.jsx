@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
+import { useYear } from '../context/YearContext'
 
 function StatCard({ emoji, label, value, to }) {
   const navigate = useNavigate()
@@ -16,6 +17,7 @@ function StatCard({ emoji, label, value, to }) {
 
 function Dashboard() {
   const { user } = useAuth()
+  const { selectedYear } = useYear()
   const [stats, setStats] = useState({
     movies: 0, books: 0, workouts: 0, places: 0, moods: 0
   })
@@ -24,7 +26,13 @@ function Dashboard() {
     const fetchStats = async () => {
       const tables = ['movies', 'books', 'workouts', 'places', 'moods']
       const results = await Promise.all(
-        tables.map(t => supabase.from(t).select('id', { count: 'exact' }).eq('user_id', user.id))
+        tables.map(t => supabase
+          .from(t)
+          .select('id', { count: 'exact' })
+          .eq('user_id', user.id)
+          .gte('date', `${selectedYear}-01-01`)
+          .lte('date', `${selectedYear}-12-31`)
+        )
       )
       setStats({
         movies: results[0].count || 0,
@@ -35,17 +43,14 @@ function Dashboard() {
       })
     }
     fetchStats()
-  }, [user])
-
-  const year = new Date().getFullYear()
+  }, [selectedYear])
 
   return (
     <div className="page">
       <div className="page-header">
         <h2>🏠 Dashboard</h2>
-        <p className="page-subtitle">Tu {year} en números</p>
+        <p className="page-subtitle">Tu {selectedYear} en números</p>
       </div>
-
       <div className="stats-grid">
         <StatCard emoji="🎬" label="Películas y series" value={stats.movies} to="/peliculas" />
         <StatCard emoji="📚" label="Libros leídos" value={stats.books} to="/libros" />

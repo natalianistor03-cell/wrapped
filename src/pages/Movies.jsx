@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
+import { useYear } from '../context/YearContext'
 
 const TYPES = ['Película', 'Serie', 'Documental']
 
@@ -22,6 +23,7 @@ function Stars({ rating, onRate }) {
 
 function Movies() {
   const { user } = useAuth()
+  const { selectedYear } = useYear()
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
   const [title, setTitle] = useState('')
@@ -34,12 +36,14 @@ function Movies() {
       .from('movies')
       .select('*')
       .eq('user_id', user.id)
+      .gte('date', `${selectedYear}-01-01`)   
+      .lte('date', `${selectedYear}-12-31`)
       .order('date', { ascending: false })
     setMovies(data || [])
     setLoading(false)
   }
 
-  useEffect(() => { fetchMovies() }, [])
+  useEffect(() => { fetchMovies() }, [selectedYear])
 
   const handleAdd = async () => {
     if (!title) return

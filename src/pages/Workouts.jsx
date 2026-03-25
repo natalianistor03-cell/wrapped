@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
+import { useYear } from '../context/YearContext'
 
 const TYPES = ['Fuerza', 'Cardio', 'Yoga', 'Natación', 'Ciclismo', 'Running', 'Otro']
 
 function Workouts() {
   const { user } = useAuth()
+  const { selectedYear } = useYear()
   const [workouts, setWorkouts] = useState([])
   const [loading, setLoading] = useState(true)
   const [type, setType] = useState('Fuerza')
@@ -18,12 +20,14 @@ function Workouts() {
       .from('workouts')
       .select('*')
       .eq('user_id', user.id)
+      .gte('date', `${selectedYear}-01-01`)   // filtro por año
+      .lte('date', `${selectedYear}-12-31`)
       .order('date', { ascending: false })
     setWorkouts(data || [])
     setLoading(false)
   }
 
-  useEffect(() => { fetchWorkouts() }, [])
+  useEffect(() => { fetchWorkouts() }, [selectedYear])
 
   const handleAdd = async () => {
     if (!duration) return

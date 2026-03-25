@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
+import { useYear } from '../context/YearContext'
 
 function Stars({ rating, onRate }) {
   return (
@@ -20,6 +21,7 @@ function Stars({ rating, onRate }) {
 
 function Books() {
   const { user } = useAuth()
+   const { selectedYear } = useYear()
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(true)
   const [title, setTitle] = useState('')
@@ -32,12 +34,14 @@ function Books() {
       .from('books')
       .select('*')
       .eq('user_id', user.id)
+      .gte('date', `${selectedYear}-01-01`)   // filtro por año
+      .lte('date', `${selectedYear}-12-31`)
       .order('date', { ascending: false })
     setBooks(data || [])
     setLoading(false)
   }
 
-  useEffect(() => { fetchBooks() }, [])
+  useEffect(() => { fetchBooks() }, [selectedYear])
 
   const handleAdd = async () => {
     if (!title || !author) return
