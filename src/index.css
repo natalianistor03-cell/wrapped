@@ -915,9 +915,16 @@ body {
 }
 
 .notfound-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   font-size: 8rem;
   font-weight: 900;
   line-height: 1;
+}
+
+.notfound-number {
   background: linear-gradient(135deg, #6366f1, #a855f7);
   background-clip: text;
   -webkit-background-clip: text;
@@ -938,6 +945,7 @@ body {
 .spin {
   display: inline-block;
   animation: spin 2s linear infinite;
+  font-size: 7rem;
 }
 
 @keyframes spin {

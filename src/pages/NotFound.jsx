@@ -5,7 +5,11 @@ function NotFound() {
 
   return (
     <div className="notfound-page">
-      <p className="notfound-code">4<span className="spin">🌀</span>4</p>
+      <p className="notfound-code">
+        <span className="notfound-number">4</span>
+        <span className="spin">🌀</span>
+        <span className="notfound-number">4</span>
+      </p>
       <h2 className="notfound-title">Página no encontrada</h2>
       <p className="notfound-sub">La página que buscas no existe o fue movida.</p>
       <button className="submit-btn" onClick={() => navigate('/')}>
