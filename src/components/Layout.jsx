@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import YearFilter from './YearFilter'
+import Footer from './Footer'
 
 function Layout({ children }) {
   const { signOut } = useAuth()
@@ -31,6 +32,7 @@ function Layout({ children }) {
         <button className="signout-btn" onClick={handleSignOut}>Cerrar sesión</button>
       </aside>
       <main className="content">{children}</main>
+      <Footer />
     </div>
   )
 }
