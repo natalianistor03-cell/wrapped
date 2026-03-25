@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import { supabase } from '../lib/supabase'
 
 function Login() {
   const { signIn, signUp } = useAuth()
@@ -10,6 +11,7 @@ function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [resetSent, setResetSent] = useState(false)
 
   const handleSubmit = async () => {
     if (!email || !password) return
@@ -30,6 +32,22 @@ function Login() {
       }
     }
     setLoading(false)
+  }
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      setError('Introduce tu email primero.')
+      return
+    }
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`
+    })
+    if (error) {
+      setError(error.message)
+    } else {
+      setResetSent(true)
+      setError('')
+    }
   }
 
   return (
@@ -60,22 +78,44 @@ function Login() {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        {!resetSent && (
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        )}
 
         {error && <p className="login-error">{error}</p>}
 
-        <button
-          className="submit-btn"
-          onClick={handleSubmit}
-          disabled={loading || !email || !password}
-        >
-          {loading ? 'Cargando...' : isRegister ? 'Crear cuenta' : 'Entrar'}
-        </button>
+        {resetSent && (
+          <p className="login-success">
+            ✅ Te hemos enviado un email para restablecer tu contraseña.
+          </p>
+        )}
+
+        {!resetSent && (
+          <button
+            className="submit-btn"
+            onClick={handleSubmit}
+            disabled={loading || !email || !password}
+          >
+            {loading ? 'Cargando...' : isRegister ? 'Crear cuenta' : 'Entrar'}
+          </button>
+        )}
+
+        {!isRegister && !resetSent && (
+          <button className="forgot-btn" onClick={handleForgotPassword}>
+            ¿Olvidaste tu contraseña?
+          </button>
+        )}
+
+        {resetSent && (
+          <button className="forgot-btn" onClick={() => setResetSent(false)}>
+            Volver al login
+          </button>
+        )}
       </div>
     </div>
   )

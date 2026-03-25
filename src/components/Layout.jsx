@@ -1,6 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import Footer from './Footer'
 
 function Layout({ children }) {
   const { signOut } = useAuth()
@@ -33,13 +32,18 @@ function Layout({ children }) {
               🌍 Lugares
             </NavLink>
             <NavLink to="/animo" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>
-              💭 Estado de ánimo
+              💭 Ánimo
             </NavLink>
             <NavLink to="/wrapped" className={({ isActive }) => isActive ? 'nav-item active wrapped-link' : 'nav-item wrapped-link'}>
-              ✨ Mi Wrapped
+              ✨ Wrapped
             </NavLink>
+            {/* Botón cerrar sesión en móvil */}
+            <button className="nav-signout" onClick={handleSignOut}>
+              🚪 Salir
+            </button>
           </nav>
         </div>
+        {/* Botón cerrar sesión en escritorio */}
         <button className="signout-btn" onClick={handleSignOut}>
           Cerrar sesión
         </button>
@@ -48,7 +52,6 @@ function Layout({ children }) {
       <main className="content">
         {children}
       </main>
-      <Footer />
     </div>
   )
 }

@@ -694,7 +694,7 @@ body {
     width: 100%;
     height: auto;
     position: fixed;
-    bottom: 2.4rem;
+    bottom: 2.2rem;
     top: auto;
     left: 0;
     right: 0;
@@ -809,4 +809,58 @@ body {
     padding: 0.6rem 1rem;
     font-size: 0.75rem;
   }
+}
+
+/* Botón cerrar sesión en móvil — oculto en escritorio */
+.nav-signout {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-signout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.65rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+
+  .nav-signout:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+  }
+}
+
+/*-- NEW PASSWORD --*/
+.forgot-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+  transition: color 0.2s;
+  padding: 0.2rem;
+}
+
+.forgot-btn:hover {
+  color: #a5b4fc;
+}
+
+.login-success {
+  color: #34d399;
+  font-size: 0.85rem;
+  text-align: center;
+  background: rgba(52, 211, 153, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem;
 }
