@@ -53,7 +53,7 @@ function Dashboard() {
         <p className="page-subtitle">Tu {selectedYear} en números</p>
       </div>
       <div className="stats-grid">
-        <StatCard emoji="🎬" label="Películas y series" value={stats.movies} to="/peliculas" />
+        <StatCard icon={<img src="/tu-icono.png" alt="películas" width={28} height={28} />} label="Películas y series" value={stats.movies} to="/peliculas" />
         <StatCard emoji="📚" label="Libros leídos" value={stats.books} to="/libros" />
         <StatCard emoji="🏋️" label="Entrenamientos" value={stats.workouts} to="/entrenamientos" />
         <StatCard emoji="🌍" label="Lugares visitados" value={stats.places} to="/lugares" />

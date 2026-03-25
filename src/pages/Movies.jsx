@@ -67,7 +67,10 @@ function Movies() {
   return (
     <div className="page">
       <div className="page-header">
-        <h2>🎬 Películas y Series</h2>
+        <h2 className="page-title-icon">
+          <img src="/popcorn.png" alt="películas" width={30} height={30} />
+          Películas y Series
+        </h2>
         <p className="page-subtitle">{movies.length} registradas este año</p>
       </div>
 
