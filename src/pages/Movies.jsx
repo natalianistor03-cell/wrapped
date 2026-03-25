@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { useYear } from '../context/YearContext'
+import { Popcorn } from 'lucide-react' // 👈 importa el icono
 
 const TYPES = ['Película', 'Serie', 'Documental']
 
@@ -36,7 +37,7 @@ function Movies() {
       .from('movies')
       .select('*')
       .eq('user_id', user.id)
-      .gte('date', `${selectedYear}-01-01`)   
+      .gte('date', `${selectedYear}-01-01`)
       .lte('date', `${selectedYear}-12-31`)
       .order('date', { ascending: false })
     setMovies(data || [])
@@ -48,11 +49,7 @@ function Movies() {
   const handleAdd = async () => {
     if (!title) return
     await supabase.from('movies').insert({
-      user_id: user.id,
-      title,
-      type,
-      rating,
-      date
+      user_id: user.id, title, type, rating, date
     })
     setTitle('')
     setRating(5)
@@ -67,8 +64,10 @@ function Movies() {
   return (
     <div className="page">
       <div className="page-header">
-        <h2>🎬 Películas y Series</h2>
-        <p className="page-subtitle">{movies.length} registradas este año</p>
+        <h2 className="page-title-icon">
+          <Popcorn size={28} /> Películas y Series  {/* 👈 icono en el título */}
+        </h2>
+        <p className="page-subtitle">{movies.length} registradas en {selectedYear}</p>
       </div>
 
       <div className="form-card">

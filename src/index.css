@@ -1064,3 +1064,10 @@ body {
 .sunset-card:hover .sunset-delete {
   opacity: 1;
 }
+
+/*--ICONOS--*/
+.page-title-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
