@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { useYear } from '../context/YearContext'
+import { BookOpenText } from 'lucide-react'
 
 function Stars({ rating, onRate }) {
   return (
@@ -62,7 +63,9 @@ function Books() {
   return (
     <div className="page">
       <div className="page-header">
-        <h2>📚 Libros</h2>
+        <h2 className="page-title-icon">
+          <BookOpenText size={28} /> Libros
+        </h2>
         <p className="page-subtitle">{books.length} leídos este año</p>
       </div>
 
