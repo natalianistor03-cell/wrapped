@@ -10,6 +10,7 @@ import Places from './pages/Places'
 import Mood from './pages/Mood'
 import Wrapped from './pages/Wrapped'
 import NotFound from './pages/NotFound'
+import Sunsets from './pages/Sunsets'
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth()
@@ -27,6 +28,7 @@ function App() {
       <Route path="/lugares" element={<ProtectedRoute><Places /></ProtectedRoute>} />
       <Route path="/animo" element={<ProtectedRoute><Mood /></ProtectedRoute>} />
       <Route path="/wrapped" element={<ProtectedRoute><Wrapped /></ProtectedRoute>} />
+      <Route path="/atardeceres" element={<ProtectedRoute><Sunsets /></ProtectedRoute>} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

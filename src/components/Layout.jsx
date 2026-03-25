@@ -25,6 +25,7 @@ function Layout({ children }) {
             <NavLink to="/entrenamientos" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>🏋️ Entrenamientos</NavLink>
             <NavLink to="/lugares" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>🌍 Lugares</NavLink>
             <NavLink to="/animo" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>💭 Ánimo</NavLink>
+            <NavLink to="/atardeceres" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>🌅 Atardeceres</NavLink>
             <NavLink to="/wrapped" className={({ isActive }) => isActive ? 'nav-item active wrapped-link' : 'nav-item wrapped-link'}>✨ Wrapped</NavLink>
             <button className="nav-signout" onClick={handleSignOut}>🚪 Salir</button>
           </nav>

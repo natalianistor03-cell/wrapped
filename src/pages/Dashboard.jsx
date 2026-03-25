@@ -24,7 +24,7 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchStats = async () => {
-      const tables = ['movies', 'books', 'workouts', 'places', 'moods']
+      const tables = ['movies', 'books', 'workouts', 'places', 'moods', 'sunsets']
       const results = await Promise.all(
         tables.map(t => supabase
           .from(t)
@@ -39,7 +39,8 @@ function Dashboard() {
         books: results[1].count || 0,
         workouts: results[2].count || 0,
         places: results[3].count || 0,
-        moods: results[4].count || 0
+        moods: results[4].count || 0,
+        sunsets: results[5].count || 0
       })
     }
     fetchStats()
@@ -57,6 +58,7 @@ function Dashboard() {
         <StatCard emoji="🏋️" label="Entrenamientos" value={stats.workouts} to="/entrenamientos" />
         <StatCard emoji="🌍" label="Lugares visitados" value={stats.places} to="/lugares" />
         <StatCard emoji="💭" label="Estados de ánimo" value={stats.moods} to="/animo" />
+        <StatCard emoji="🌅" label="Atardeceres vistos" value={stats.sunsets} to="/atardeceres" />
       </div>
     </div>
   )
