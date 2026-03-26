@@ -1,4 +1,4 @@
-# 🌀 Wrapped Personal
+# 🌀 Wrapped Personal v1.0
 
 Una aplicación web fullstack para registrar y visualizar tu año en datos — películas, libros, entrenamientos, lugares y estado de ánimo — con una historia animada al estilo Spotify Wrapped.
 
